@@ -50,7 +50,7 @@ def extract_record(event: dict):
     if op in ("c", "u", "r"):
         row = event.get("after")
     elif op == "d":
-        row = event.get("before")
+        row = event.get("after")
     else:
         return None
 
