@@ -1,14 +1,14 @@
+import io
 import json
 import os
 import time
-import io
 from datetime import datetime, timezone
 
 import boto3
 import pandas as pd
+from dotenv import load_dotenv
 from kafka import KafkaConsumer, TopicPartition
 from kafka.structs import OffsetAndMetadata
-from dotenv import load_dotenv
 
 load_dotenv()
 

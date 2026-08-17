@@ -1,10 +1,10 @@
 import os
 import random
 import time
-import yaml
 
 import psycopg2
 import psycopg2.errors
+import yaml
 from dotenv import load_dotenv
 from faker import Faker
 
