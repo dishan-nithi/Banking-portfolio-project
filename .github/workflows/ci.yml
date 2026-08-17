@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches-ignore: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install ruff pytest
+          pip install faker psycopg2-binary pyyaml python-dotenv
+          pip install kafka-python boto3 pandas pyarrow
+
+      - name: Lint Python
+        run: ruff check consumer/ data-generator/
+
+      - name: Run unit tests
+        run: pytest tests/ -v
+
+  dbt-parse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dbt
+        run: pip install dbt-core dbt-snowflake
+
+      - name: Validate dbt project structure
+        working-directory: banking_dbt
+        env:
+          DBT_PROFILES_DIR: .
+          SNOWFLAKE_ACCOUNT: placeholder
+          SNOWFLAKE_USER: placeholder
+          SNOWFLAKE_PASSWORD: placeholder
+        run: dbt parse

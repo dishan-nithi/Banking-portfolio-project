@@ -4,3 +4,7 @@ __pycache__/
 banking_dbt/target/
 banking_dbt/logs/
 banking_dbt/dbt_packages/
+dbt_core_experimental_parser-2.0.0b1-py3-none-manylinux_2_28_x86_64.whl
+test_download.whl
+accounts_dump.txt
+snowflake_test_downloads/

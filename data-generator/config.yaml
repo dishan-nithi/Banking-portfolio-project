@@ -1,0 +1,17 @@
+sleep_seconds: 2
+
+actions:
+  new_customer: 0.05
+  new_account: 0.10
+  update_customer_email: 0.10
+  close_account: 0.05
+  delete_pending_customer: 0.05
+  transaction: 0.65
+
+transaction_types:
+  deposit: 0.40
+  withdrawal: 0.35
+  transfer: 0.25
+
+amount_min: 5.00
+amount_max: 500.00

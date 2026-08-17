@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: stg_customers
+    columns:
+      - name: id
+        data_tests:
+          - unique
+          - not_null
+      - name: email
+        data_tests:
+          - not_null
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['PENDING', 'ACTIVE', 'CLOSED']
+
+  - name: stg_accounts
+    columns:
+      - name: id
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_customers')
+                field: id
+      - name: balance
+        data_tests:
+          - not_null
+      - name: account_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['SAVINGS', 'CHECKING']
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['ACTIVE', 'CLOSED']
+
+  - name: stg_transactions
+    columns:
+      - name: id
+        data_tests:
+          - unique
+          - not_null
+      - name: account_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_accounts')
+                field: id
+      - name: amount
+        data_tests:
+          - not_null
+      - name: txn_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['DEPOSIT', 'WITHDRAWAL', 'TRANSFER']

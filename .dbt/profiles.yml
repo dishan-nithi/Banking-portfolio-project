@@ -1,0 +1,13 @@
+banking_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: PGYISGW-BK72335
+      user: dishannithi
+      password: cPA432a6xBuzqdR
+      role: ACCOUNTADMIN
+      database: banking
+      warehouse: banking_wh
+      schema: staging
+      threads: 4
