@@ -3,6 +3,7 @@ import os
 import time
 import io
 from datetime import datetime, timezone
+
 import boto3
 import pandas as pd
 from kafka import KafkaConsumer, TopicPartition

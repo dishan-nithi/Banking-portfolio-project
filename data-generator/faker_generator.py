@@ -2,6 +2,7 @@ import os
 import random
 import time
 import yaml
+
 import psycopg2
 import psycopg2.errors
 from dotenv import load_dotenv
