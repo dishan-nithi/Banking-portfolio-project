@@ -10,14 +10,13 @@ from faker import Faker
 load_dotenv()
 fake = Faker()
 
-DB_CONFIG = dict(
-    host=os.getenv("POSTGRES_HOST", "localhost"),
-    port=os.getenv("POSTGRES_PORT", "5432"),
-    dbname=os.getenv("POSTGRES_DB", "banking"),
-    user=os.getenv("POSTGRES_USER", "postgres"),
-    password=os.getenv("POSTGRES_PASSWORD", "postgres"),
-)
-
+DB_CONFIG = {
+    "host": os.getenv("POSTGRES_HOST", "localhost"),
+    "port": os.getenv("POSTGRES_PORT", "5432"),
+    "dbname": os.getenv("POSTGRES_DB", "banking"),
+    "user": os.getenv("POSTGRES_USER", "postgres"),
+    "password": os.getenv("POSTGRES_PASSWORD", "postgres"),
+}
 
 def load_config(path="config.yaml"):
     with open(path) as f:
