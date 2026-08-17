@@ -11,7 +11,7 @@ from kafka import KafkaConsumer, TopicPartition
 from kafka.structs import OffsetAndMetadata
 
 load_dotenv()
-
+ 
 KAFKA_BOOTSTRAP = os.getenv("KAFKA_BOOTSTRAP", "localhost:29092")
 KAFKA_GROUP = os.getenv("KAFKA_GROUP", "minio-landing-group")
 MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "http://localhost:9000")
